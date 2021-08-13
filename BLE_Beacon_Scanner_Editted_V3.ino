@@ -1,8 +1,3 @@
-/*
-   Based on Neil Kolban example for IDF: https://github.com/nkolban/esp32-snippets/blob/master/cpp_utils/tests/BLE%20Tests/SampleScan.cpp
-   Ported to Arduino ESP32 by Evandro Copercini
-   Changed to a beacon scanner to report iBeacon, EddystoneURL and EddystoneTLM beacons by beegee-tokyo
-*/
 
 #include <Arduino.h>
 #include <BLEDevice.h>
@@ -45,6 +40,15 @@ void setup()
   pBLEScan->setActiveScan(true); //active scan uses more power, but get results faster
   pBLEScan->setInterval(100);
   pBLEScan->setWindow(99); // less or equal setInterval value
+
+   Serial.println("Total heap: %d");
+   Serial.println(ESP.getHeapSize());
+   Serial.println("Free heap: %d");
+   Serial.println(ESP.getFreeHeap());
+   Serial.println("Total PSRAM: %d");
+   Serial.println(ESP.getPsramSize());
+   Serial.println("Free PSRAM: %d");
+   Serial.println(ESP.getFreePsram());
 }
 
 void loop()
